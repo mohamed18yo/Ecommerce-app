@@ -13,23 +13,24 @@ exports.getCart = async (req, res, next) => {
   );
   let products = await Product.find().limit(4);
 
-    async function sumCart(cart) {
-      return new Promise((resolve, reject) => {
-        var total = 0;
-        cart.forEach((c) => {
-          total += c.product.price * c.count;
-        });
-        resolve(total);
+  async function sumCart(cart) {
+    return new Promise((resolve, reject) => {
+      var total = 0;
+      cart.forEach((c) => {
+        total += c.product.price * c.count;
       });
-    }
-    let amount = await sumCart(carts)
-    res.render("cart", {
-      title: "Cart | eCommerce Template",
-      carts,
-      count,
-      products,
-      amount,
+      resolve(total);
     });
+  }
+  
+  let amount = await sumCart(carts);
+  res.render("cart", {
+    title: "Cart | eCommerce Template",
+    carts,
+    count,
+    products,
+    amount,
+  });
 };
 
 exports.add = (req, res, next) => {

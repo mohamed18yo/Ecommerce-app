@@ -85,8 +85,8 @@
 			<div class="row">
 
 			@model.products.forEach((product)=>{
-					@model.carts.forEach((cart)=>{
-				@if(@product.id != @cart.product)
+					
+				
 						<div class="col-lg-3 col-sm-6">
 					<div class="product-item">
 						<div class="pi-pic">
@@ -111,15 +111,8 @@
 	</div>
 	</section>
 	
-<script>
-function amount(){
-	var total =$('.total')
-	var count =$('.count').val();
-	var price =$('.price').val();
-	var amount = count*price;
-	total.text(amount)
-}
+
 	 
-</script>
+
 })
 })
